@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-living-room.jpg";
 
 const HeroSection = () => {
@@ -28,18 +29,18 @@ const HeroSection = () => {
             Handcrafted molded pieces designed for comfort, built to last a lifetime.
           </p>
           <div className="mt-8 flex gap-4 opacity-0 animate-fade-up" style={{ animationDelay: "300ms" }}>
-            <a
-              href="#collection"
+            <Link
+              to="/collection"
               className="bg-primary text-primary-foreground px-7 py-3.5 text-sm font-semibold rounded-lg hover:opacity-90 transition-all active:scale-[0.97] duration-150 shadow-lg shadow-primary/30"
             >
               View Collection
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to="/contact"
               className="border border-background/40 text-background px-7 py-3.5 text-sm font-medium rounded-lg hover:bg-background/10 transition-colors active:scale-[0.97] duration-150"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
