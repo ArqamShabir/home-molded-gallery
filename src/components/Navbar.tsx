@@ -6,9 +6,9 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { label: "Collection", href: "/#collection" },
-    { label: "About", href: "/#about" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Collection", href: "/collection" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -20,20 +20,20 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="/#contact"
+          <Link
+            to="/contact"
             className="text-sm font-medium bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:opacity-90 transition-opacity active:scale-[0.97] duration-150 shadow-sm shadow-primary/20"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
 
         <button
@@ -48,22 +48,22 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-background border-b border-border px-6 pb-6 pt-2 animate-fade-in">
           {links.map((link) => (
-            <a
+            <Link
               key={link.label}
-              href={link.href}
+              to={link.href}
               onClick={() => setOpen(false)}
               className="block py-3 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a
-            href="/#contact"
+          <Link
+            to="/contact"
             onClick={() => setOpen(false)}
             className="inline-block mt-2 text-sm font-medium bg-primary text-primary-foreground px-5 py-2 rounded-lg"
           >
             Get a Quote
-          </a>
+          </Link>
         </div>
       )}
     </nav>

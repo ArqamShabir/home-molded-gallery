@@ -13,7 +13,7 @@ const ProductDetail = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-2xl text-foreground">Product not found</h1>
-          <Link to="/" className="mt-4 inline-block text-sm text-primary hover:underline">
+          <Link to="/collection" className="mt-4 inline-block text-sm text-primary hover:underline">
             ← Back to collection
           </Link>
         </div>
@@ -32,7 +32,7 @@ const ProductDetail = () => {
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight size={14} />
-            <Link to="/#collection" className="hover:text-primary transition-colors">Collection</Link>
+            <Link to="/collection" className="hover:text-primary transition-colors">Collection</Link>
             <ChevronRight size={14} />
             <span className="text-foreground font-medium">{product.name}</span>
           </div>
@@ -106,12 +106,12 @@ const ProductDetail = () => {
               </div>
 
               {/* CTA */}
-              <a
-                href="/#contact"
+              <Link
+                to="/contact"
                 className="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary text-primary-foreground px-10 py-4 rounded-lg text-sm font-semibold hover:opacity-90 transition-all active:scale-[0.97] duration-150 shadow-md shadow-primary/20"
               >
                 Contact for Pricing
-              </a>
+              </Link>
               <p className="mt-3 text-xs text-muted-foreground">
                 Custom sizing & finishes available on request
               </p>
