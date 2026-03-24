@@ -10,7 +10,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-foreground/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/30 to-foreground/10" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
@@ -30,13 +30,13 @@ const HeroSection = () => {
           <div className="mt-8 flex gap-4 opacity-0 animate-fade-up" style={{ animationDelay: "300ms" }}>
             <a
               href="#collection"
-              className="bg-background text-foreground px-6 py-3 text-sm font-medium rounded-sm hover:bg-background/90 transition-colors active:scale-[0.97] duration-150"
+              className="bg-primary text-primary-foreground px-7 py-3.5 text-sm font-semibold rounded-lg hover:opacity-90 transition-all active:scale-[0.97] duration-150 shadow-lg shadow-primary/30"
             >
               View Collection
             </a>
             <a
               href="#contact"
-              className="border border-background/40 text-background px-6 py-3 text-sm font-medium rounded-sm hover:bg-background/10 transition-colors active:scale-[0.97] duration-150"
+              className="border border-background/40 text-background px-7 py-3.5 text-sm font-medium rounded-lg hover:bg-background/10 transition-colors active:scale-[0.97] duration-150"
             >
               Contact Us
             </a>
