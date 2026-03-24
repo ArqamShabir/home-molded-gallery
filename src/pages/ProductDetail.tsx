@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Ruler, Layers, Clock } from "lucide-react";
+import { ArrowLeft, Ruler, Layers, Clock, ChevronRight, Truck, ShieldCheck, RotateCcw } from "lucide-react";
 import { products } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -29,60 +29,78 @@ const ProductDetail = () => {
       <main className="pt-16">
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <Link
-            to="/#collection"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <ArrowLeft size={15} />
-            Back to Collection
-          </Link>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight size={14} />
+            <Link to="/#collection" className="hover:text-primary transition-colors">Collection</Link>
+            <ChevronRight size={14} />
+            <span className="text-foreground font-medium">{product.name}</span>
+          </div>
         </div>
 
         {/* Product Hero */}
         <div className="max-w-7xl mx-auto px-6 pb-20">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Image */}
-            <div className="aspect-square overflow-hidden rounded-sm bg-card opacity-0 animate-fade-in">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+            <div className="opacity-0 animate-fade-in">
+              <div className="aspect-square overflow-hidden rounded-lg bg-card shadow-lg">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
             </div>
 
             {/* Details */}
             <div className="opacity-0 animate-fade-up" style={{ animationDelay: "150ms" }}>
-              <p className="text-sm font-medium text-primary tracking-wide uppercase">
+              <span className="inline-block text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full tracking-wide uppercase">
                 {product.category}
-              </p>
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-foreground mt-2 leading-[1.1]">
+              </span>
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-foreground mt-4 leading-[1.1]">
                 {product.name}
               </h1>
-              <p className="mt-6 text-muted-foreground leading-relaxed text-base">
+              <p className="mt-6 text-muted-foreground leading-relaxed text-base lg:text-lg">
                 {product.description}
               </p>
 
+              {/* Trust Badges */}
+              <div className="mt-8 flex flex-wrap gap-6">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Truck size={16} className="text-primary" />
+                  <span>Free Delivery</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <ShieldCheck size={16} className="text-primary" />
+                  <span>5-Year Warranty</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <RotateCcw size={16} className="text-primary" />
+                  <span>30-Day Returns</span>
+                </div>
+              </div>
+
               {/* Specs */}
-              <div className="mt-10 space-y-5 border-t border-border pt-8">
-                <div className="flex items-start gap-3">
-                  <Ruler size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
+              <div className="mt-10 space-y-0 border border-border rounded-lg overflow-hidden">
+                <div className="flex items-center gap-4 px-5 py-4 bg-card">
+                  <Ruler size={18} className="text-primary shrink-0" />
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-foreground">Dimensions</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{product.dimensions}</p>
+                    <p className="text-sm text-muted-foreground">{product.dimensions}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Layers size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
+                <div className="flex items-center gap-4 px-5 py-4 border-t border-border">
+                  <Layers size={18} className="text-primary shrink-0" />
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-foreground">Materials</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{product.materials}</p>
+                    <p className="text-sm text-muted-foreground">{product.materials}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <Clock size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
+                <div className="flex items-center gap-4 px-5 py-4 bg-card border-t border-border">
+                  <Clock size={18} className="text-primary shrink-0" />
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-foreground">Lead Time</p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{product.leadTime}</p>
+                    <p className="text-sm text-muted-foreground">{product.leadTime}</p>
                   </div>
                 </div>
               </div>
@@ -90,26 +108,30 @@ const ProductDetail = () => {
               {/* CTA */}
               <a
                 href="/#contact"
-                className="mt-10 inline-flex items-center justify-center w-full sm:w-auto bg-primary text-primary-foreground px-8 py-3.5 rounded-sm text-sm font-medium hover:opacity-90 transition-opacity active:scale-[0.97] duration-150"
+                className="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary text-primary-foreground px-10 py-4 rounded-lg text-sm font-semibold hover:opacity-90 transition-all active:scale-[0.97] duration-150 shadow-md shadow-primary/20"
               >
                 Contact for Pricing
               </a>
+              <p className="mt-3 text-xs text-muted-foreground">
+                Custom sizing & finishes available on request
+              </p>
             </div>
           </div>
         </div>
 
         {/* Related Products */}
-        <section className="bg-card py-20">
+        <section className="bg-card/50 border-t border-border py-20">
           <div className="max-w-7xl mx-auto px-6">
-            <h2 className="font-display text-2xl text-foreground mb-10">You may also like</h2>
+            <p className="text-sm font-semibold text-primary tracking-wide uppercase">More to explore</p>
+            <h2 className="font-display text-2xl sm:text-3xl text-foreground mt-2 mb-12">You may also like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {otherProducts.map((p) => (
                 <Link key={p.slug} to={`/product/${p.slug}`} className="group">
-                  <div className="aspect-square overflow-hidden rounded-sm bg-background">
+                  <div className="aspect-square overflow-hidden rounded-lg bg-background shadow-sm">
                     <img
                       src={p.image}
                       alt={p.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
